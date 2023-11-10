@@ -4,6 +4,6 @@ namespace myCrudAppApi.Models
   { 
     public int MessageId { get; set; }
     public string Name { get; set; }
-    public string Message { get; set; }
+    public string MessageText { get; set; }
   }
 }
