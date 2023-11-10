@@ -8,6 +8,16 @@ namespace myCrudAppApi.Models
 
     public myCrudAppApiContext(DbContextOptions<myCrudAppApiContext> options) : base(options)
     {
+      
+    }
+
+      protected override void OnModelCreating(ModelBuilder builder)
+    {
+      builder.Entity<Animal>()
+        .HasData(
+          new Message { MessageId = 1, Name = "Kymani", MessageText = "I'm a Kymani" },
+          new Message { MessageId = 2, Name = "Qayden", MessageText = "I'm a Qayden" },
+        );
     }
   }
 }
