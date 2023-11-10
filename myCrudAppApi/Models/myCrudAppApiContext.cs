@@ -13,10 +13,10 @@ namespace myCrudAppApi.Models
 
       protected override void OnModelCreating(ModelBuilder builder)
     {
-      builder.Entity<Animal>()
+      builder.Entity<Message>()
         .HasData(
           new Message { MessageId = 1, Name = "Kymani", MessageText = "I'm a Kymani" },
-          new Message { MessageId = 2, Name = "Qayden", MessageText = "I'm a Qayden" },
+          new Message { MessageId = 2, Name = "Qayden", MessageText = "I'm a Qayden" }
         );
     }
   }
