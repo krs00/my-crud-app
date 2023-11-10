@@ -4,7 +4,7 @@ using myCrudAppApi.Models;
 
 namespace myCrudAppApi.Controllers
 {
-  [Route("api/[controller]")] 
+  [Route("[controller]")] 
   [ApiController]
   public class MessagesController : ControllerBase
   {
@@ -15,14 +15,14 @@ namespace myCrudAppApi.Controllers
       _db = db;
     }
 
-    // GET api/messages
+    // GET /messages
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Message>>> Get()
     {
       return await _db.Messages.ToListAsync();
     }
 
-    // GET: api/messages/5
+    // GET: /messages/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Message>> GetMessage(int id)
     {
