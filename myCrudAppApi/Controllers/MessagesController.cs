@@ -36,6 +36,8 @@ namespace myCrudAppApi.Controllers
       return message;
     }
 
+
+
     // POST /messages
     [HttpPost]
     public async Task<ActionResult<Message>> Post(Message message)
@@ -75,11 +77,10 @@ namespace myCrudAppApi.Controllers
       return NoContent();
     }
 
-    private bool MessageExists(int id)
+     private bool MessageExists(int id)
     {
-      return _db.Message.Any(e => e.MessageId == id);
+      return _db.Messages.Any(e => e.MessageId == id);
     }
-
 
 
   }
