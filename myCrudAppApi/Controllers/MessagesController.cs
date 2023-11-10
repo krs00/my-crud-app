@@ -37,6 +37,11 @@ namespace myCrudAppApi.Controllers
     }
 
 
-    
+
   }
 }
+
+
+// .NET Automatically Converts C# into JSON 
+// It's a Best Practice to Use Async Controller Actions
+
