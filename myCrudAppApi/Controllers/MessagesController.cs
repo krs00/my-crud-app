@@ -45,6 +45,43 @@ namespace myCrudAppApi.Controllers
       return CreatedAtAction(nameof(GetMessage), new { id = message.MessageId }, message);
     }
 
+    ...
+    // PUT: /messages/5
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, Message message)
+    {
+      if (id != message.MessageId)
+      {
+        return BadRequest();
+      }
+
+      _db.Messages.Update(message);
+
+      try
+      {
+        await _db.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!MessageExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return NoContent();
+    }
+
+    private bool MessageExists(int id)
+    {
+      return _db.Message.Any(e => e.MessageId == id);
+    }
+...
+
 
 
   }
