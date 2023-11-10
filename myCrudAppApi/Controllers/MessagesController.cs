@@ -94,3 +94,4 @@ namespace myCrudAppApi.Controllers
 // Never include an Id property when making a POST request, 
 // as that value should always be set by our database.
 
+// PUT requires a body with the entire updated object (including the ObjectId)
