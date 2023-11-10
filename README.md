@@ -1,0 +1,1 @@
+This is a simple test fullstack app to remind myself how .NET works. I'll build something more complicated once I get more familiar with the technologies!
