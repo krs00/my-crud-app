@@ -36,6 +36,15 @@ namespace myCrudAppApi.Controllers
       return message;
     }
 
+    // POST /messages
+    [HttpPost]
+    public async Task<ActionResult<Message>> Post(Message message)
+    {
+      _db.Messages.Add(message);
+      await _db.SaveChangesAsync();
+      return CreatedAtAction(nameof(GetMessage), new { id = message.MessageId }, message);
+    }
+
 
 
   }
@@ -44,4 +53,7 @@ namespace myCrudAppApi.Controllers
 
 // .NET Automatically Converts C# into JSON 
 // It's a Best Practice to Use Async Controller Actions
+ 
+// Never include an Id property when making a POST request, 
+// as that value should always be set by our database.
 
