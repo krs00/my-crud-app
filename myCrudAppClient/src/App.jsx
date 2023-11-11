@@ -1,4 +1,5 @@
 import AddForm from "./components/AddForm"
+import EditForm from "./components/EditForm"
  
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
      <AddForm />
+     <EditForm /> 
     </>
   )
 }
