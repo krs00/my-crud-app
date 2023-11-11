@@ -77,6 +77,24 @@ namespace myCrudAppApi.Controllers
       return NoContent();
     }
 
+    // DELETE: /Messages/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteMessage(int id)
+    {
+      Message message = await _db.Messages.FindAsync(id);
+      if (message == null)
+      {
+        return NotFound();
+      }
+
+      _db.Messages.Remove(message);
+      await _db.SaveChangesAsync();
+
+      return NoContent();
+    }
+
+    // method for finding if message exist
+
      private bool MessageExists(int id)
     {
       return _db.Messages.Any(e => e.MessageId == id);
