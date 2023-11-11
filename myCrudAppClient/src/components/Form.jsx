@@ -17,7 +17,7 @@ function Form() {
     }
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault() // Prevent the defualt action of form submission
 
         try {
             const response = await fetch('http://localhost:5001/Messages', {
