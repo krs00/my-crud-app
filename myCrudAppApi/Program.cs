@@ -1,23 +1,13 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using myCrudAppApi.Models;
 using Microsoft.EntityFrameworkCore;
-
-var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; // for enable CORS
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-
-// for enable CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy  =>
-                      {
-                          policy.WithOrigins("http://localhost:5173");
-        
-                      });
-});
-// for enable CORS
 
 builder.Services.AddDbContext<myCrudAppApiContext>(
                   dbContextOptions => dbContextOptions
@@ -27,6 +17,19 @@ builder.Services.AddDbContext<myCrudAppApiContext>(
                     )
                   )
                 ); 
+
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder
+            .AllowAnyOrigin() // Tighten this to specific origins in production
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+}); 
+// Configure CORS
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -44,7 +47,7 @@ else
   app.UseHttpsRedirection();
 }
 
-app.UseCors(MyAllowSpecificOrigins); // for enable CORS
+app.UseCors(); // For CORS
 
 app.UseAuthorization();
 
