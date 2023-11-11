@@ -1,4 +1,4 @@
-import AddForm from "./components/Form"
+import AddForm from "./components/AddForm"
  
 function App() {
 
