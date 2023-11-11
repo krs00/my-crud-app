@@ -15,11 +15,26 @@ namespace myCrudAppApi.Controllers
       _db = db;
     }
 
-    // GET /messages
+    // // GET /messages
+    // [HttpGet]
+    // public async Task<ActionResult<IEnumerable<Message>>> Get()
+    // {
+    //   return await _db.Messages.ToListAsync();
+    // }
+
+    // WITH SEARCH QUERY SUPPORT
+    // GET: /Messages
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Message>>> Get()
+    public async Task<ActionResult<IEnumerable<Message>>> Get(string name)
     {
-      return await _db.Messages.ToListAsync();
+      IQueryable<Message> query = _db.Messages.AsQueryable();
+
+      if (name != null)
+      {
+        query = query.Where(entry => entry.Name == name);
+      }
+
+      return await query.ToListAsync();
     }
 
     // GET: /messages/5
