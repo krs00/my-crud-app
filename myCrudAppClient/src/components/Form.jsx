@@ -5,7 +5,7 @@ function Form() {
     // This object represents the data from the form
     const [formData, setFormData] = useState({
         name: '',
-        message: '',
+        messageText: '',
     });
 
     function handleInputChange(e) {
@@ -13,7 +13,7 @@ function Form() {
         setFormData({
             ...formData,
             [name]: value,
-        });
+        }); 
     }
 
     async function handleSubmit(e) {
@@ -42,9 +42,9 @@ function Form() {
             // Handle error or show a user-friendly message
           }
         
-
         // console.log everything saved
         console.log('Form data submitted:', formData);
+        console.log(formData.name, formData.messageText);
     }
 
 
@@ -61,9 +61,9 @@ function Form() {
                 <br></br>
 
                 <div>
-                    <label htmlFor="message">Message:</label>
+                    <label htmlFor="messageText">Message:</label>
                     <br></br>
-                    <textarea id="message" name="message" rows="4" cols="25" value={formData.message} onChange={handleInputChange} required></textarea>
+                    <textarea id="messageText" name="messageText" rows="4" cols="25" value={formData.messageText} onChange={handleInputChange} required></textarea>
                 </div>
                 <br></br>
                 <div> 
