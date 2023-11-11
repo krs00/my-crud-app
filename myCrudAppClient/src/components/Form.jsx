@@ -16,11 +16,42 @@ function Form() {
         });
     }
 
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+        try {
+            const response = await fetch('http://localhost:5001/Messages', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),
+            });
+        
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+        
+            const responseData = await response.json();
+            console.log('Response from server:', responseData);
+        
+            // Handle success or any other logic here
+          } catch (error) {
+            console.error('Error submitting form:', error);
+        
+            // Handle error or show a user-friendly message
+          }
+        
+
+        // console.log everything saved
+        console.log('Form data submitted:', formData);
+    }
+
 
 
     return (
         <>
-            <form >
+            <form onSubmit={handleSubmit} >
                 <div>
                     <label htmlFor="name">What is your name?</label>
                     <br></br>
@@ -35,8 +66,8 @@ function Form() {
                     <textarea id="message" name="message" rows="4" cols="25" value={formData.message} onChange={handleInputChange} required></textarea>
                 </div>
                 <br></br>
-                <div>
-                    <button>Submit</button>
+                <div> 
+                    <button onClick={handleSubmit}>Submit</button>
                 </div>
             </form>
 
