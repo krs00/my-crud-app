@@ -72,7 +72,7 @@ function Form() {
             </form>
 
             <p>{formData.name}</p>
-            <p>{formData.message}</p>
+            <p>{formData.messageText}</p> 
 
         </>
     )
