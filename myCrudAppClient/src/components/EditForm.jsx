@@ -20,6 +20,10 @@ function EditForm() {
 
                 const result = await response.json();
                 setData(result);
+                // set list of names for array
+                let names = result.map(a => a.name);
+                setNamesArray(names)
+
             } catch (error) {
                 setError(error);
             } finally {
@@ -51,9 +55,10 @@ function EditForm() {
                     <br></br>
                     <select id="selectBox">
                         {/* <select id="selectBox" value={selectedValue} onChange={handleChange}> */}
-                        {console.log(typeof data)}
                         <option value="" disabled>Select a Person</option>
-                        <option value="option1">Option 1</option>
+                        {namesArray.map((name) => (
+                            <option>{name}</option> 
+                        ))}
                     </select>
 
                 </div>
