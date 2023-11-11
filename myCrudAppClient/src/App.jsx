@@ -1,11 +1,11 @@
-import Form from "./components/Form"
-
+import AddForm from "./components/Form"
+ 
 function App() {
 
 
   return (
     <>
-     <Form />
+     <AddForm />
     </>
   )
 }

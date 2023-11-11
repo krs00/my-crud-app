@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-function Form() {
+function AddForm() {
 
     // This object represents the data from the form
     const [formData, setFormData] = useState({
@@ -35,11 +35,9 @@ function Form() {
             const responseData = await response.json();
             console.log('Response from server:', responseData);
         
-            // Handle success or any other logic here
+            
           } catch (error) {
             console.error('Error submitting form:', error);
-        
-            // Handle error or show a user-friendly message
           }
         
         // console.log everything saved
@@ -50,7 +48,9 @@ function Form() {
 
 
     return (
-        <>
+        <>  
+            <p className="title">Add a message</p>
+            
             <form onSubmit={handleSubmit} >
                 <div>
                     <label htmlFor="name">What is your name?</label>
@@ -71,11 +71,10 @@ function Form() {
                 </div>
             </form>
 
-            <p>{formData.name}</p>
-            <p>{formData.messageText}</p> 
+            _______________________________________________________
 
         </>
     )
 }
 
-export default Form
+export default AddForm
