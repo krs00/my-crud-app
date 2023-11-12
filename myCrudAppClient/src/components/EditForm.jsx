@@ -1,41 +1,26 @@
 import React, { useState, useEffect } from 'react';
 
-function EditForm() {
+function EditForm(props) {
 
-    // Data for API call that grabs all current names and messages
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    // list of all names for the dynamically select box
-    const [namesArray, setNamesArray] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:5001/Messages');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const result = await response.json();
-                setData(result);
-                // set list of names for array
-                let names = result.map(a => a.name);
-                setNamesArray(names)
-
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchData();
-    }, []); // Empty dependency array means this effect runs once after the initial render
-
+    const { data, loading, error } = props;
     
-    
+    const [selectedOption, setSelectedOption] = useState('');
 
+    // Updates selectedOption variable to chosen name from select box 
+    const handleSelectChange = (e) => {
+        setSelectedOption(e.target.value)
+    }
+
+    function handleTextareaChange(e) {
+        setMessageBoxText('hi');
+      };
+
+    // Defines a options variable to populate select box
+    const options = data.map((item) => (
+        <option key={item.id} value={item.name}>
+            {item.name}
+        </option>
+    ))
 
     if (loading) {
         return <p>Loading...</p>;
@@ -53,15 +38,17 @@ function EditForm() {
                 <div>
                     <label htmlFor="selectBox">Select a person to edit their message</label>
                     <br></br>
-                    <select id="selectBox">
-                        {/* <select id="selectBox" value={selectedValue} onChange={handleChange}> */}
-                        <option value="" disabled>Select a Person</option>
-                        {namesArray.map((name) => (
-                            <option>{name}</option> 
-                        ))}
+
+                    <select value={selectedOption} onChange={handleSelectChange}>
+                        <option value="" disabled>
+                            Select an option
+                        </option>
+                        {options}
                     </select>
 
                 </div>
+
+                {selectedOption}
 
                 <br></br>
 
