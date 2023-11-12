@@ -8,6 +8,7 @@ function AddForm() {
         messageText: ''
     });
 
+    // This function updates the formData state with user input
     function handleInputChange(e) {
         const { name, value } = e.target;
         setFormData({
@@ -23,6 +24,8 @@ function AddForm() {
         })
     }
 
+    // This function makes a POST request to the API to upload submitted name and message
+    // Also clears the form input when submitted
     async function handleSubmit(e) {
         e.preventDefault() // Prevent the defualt action of form submission
 
