@@ -38,7 +38,7 @@ function DeleteForm(props) {
 
                 <br></br>
                 <div>
-                    <button>Submit</button>
+                    <button>Delete</button> 
                 </div>
             </form>
 
