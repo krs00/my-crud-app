@@ -1,5 +1,6 @@
 import AddForm from "./components/AddForm"
 import EditForm from "./components/EditForm"
+import DeleteForm from "./components/DeleteForm"
  
 import React, { useState, useEffect } from 'react';
 
@@ -37,6 +38,7 @@ function App() {
     <>
       <AddForm /> 
       {data !== null && <EditForm data={data} loading={loading} error={error} />}
+      {data !== null && <DeleteForm data={data}/>}
 
 
     </>
