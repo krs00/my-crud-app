@@ -2,6 +2,8 @@ import React, { useState } from "react"
 
 function AddForm() {
 
+    const [submitMessage, setSubmitMessage] = useState('')
+
     // This object represents the data from the form
     const [formData, setFormData] = useState({
         name: '',
@@ -22,6 +24,13 @@ function AddForm() {
             name: '',
             messageText: ''
         })
+    }
+
+    function displaySubmitMessage() {
+        setSubmitMessage('Message Posted!') 
+        setTimeout(() => {
+            setSubmitMessage('');
+          }, 2500);
     }
 
     // This function makes a POST request to the API to upload submitted name and message
@@ -50,7 +59,8 @@ function AddForm() {
             console.error('Error submitting form:', error);
           }
 
-          clearFormInputs() 
+          clearFormInputs()
+          displaySubmitMessage() 
         
         // console.log everything saved
         console.log('Form data submitted:', formData);
@@ -81,6 +91,8 @@ function AddForm() {
                 <div> 
                     <button onClick={handleSubmit}>Submit</button>
                 </div>
+                <br></br>
+                <p>{submitMessage}</p>
             </form>
 
             _______________________________________________________
