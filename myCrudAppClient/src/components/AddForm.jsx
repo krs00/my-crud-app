@@ -5,7 +5,7 @@ function AddForm() {
     // This object represents the data from the form
     const [formData, setFormData] = useState({
         name: '',
-        messageText: '',
+        messageText: ''
     });
 
     function handleInputChange(e) {
@@ -14,6 +14,13 @@ function AddForm() {
             ...formData,
             [name]: value,
         }); 
+    }
+
+    function clearFormInputs() {
+        setFormData({
+            name: '',
+            messageText: ''
+        })
     }
 
     async function handleSubmit(e) {
@@ -39,6 +46,8 @@ function AddForm() {
           } catch (error) {
             console.error('Error submitting form:', error);
           }
+
+          clearFormInputs() 
         
         // console.log everything saved
         console.log('Form data submitted:', formData);
