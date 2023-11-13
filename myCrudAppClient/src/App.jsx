@@ -1,7 +1,7 @@
 import AddForm from "./components/AddForm"
 import EditForm from "./components/EditForm"
 import DeleteForm from "./components/DeleteForm"
- 
+
 import React, { useState, useEffect } from 'react';
 
 function App() {
@@ -34,13 +34,24 @@ function App() {
 
 
 
+  // This function deletes a message by name on the client side.
+  function deleteMessageByName(currentData, userSelection) {
+
+    for (let i = 0; i < currentData.length; i++) {
+
+      if (currentData[i].name === userSelection) {
+          
+      }
+
+    }
+  }
+
+
   return (
     <>
-      <AddForm /> 
+      <AddForm />
       {data !== null && <EditForm data={data} loading={loading} error={error} />}
-      {data !== null && <DeleteForm data={data}/>}
-
-
+      {data !== null && <DeleteForm data={data} />}
     </>
   )
 }
