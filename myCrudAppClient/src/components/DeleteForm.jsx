@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-function DeleteForm(props) { 
+function DeleteForm(props) {
 
     const { data } = props;
-    
+
     const [selectedOption, setSelectedOption] = useState('');
 
     // Updates selectedOption variable to chosen name from select box 
@@ -17,6 +17,7 @@ function DeleteForm(props) {
             {item.name}
         </option>
     ))
+
 
     return (
         <>
@@ -38,7 +39,7 @@ function DeleteForm(props) {
 
                 <br></br>
                 <div>
-                    <button>Delete</button> 
+                    <button>Delete</button>
                 </div>
             </form>
 
