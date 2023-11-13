@@ -11,10 +11,6 @@ function EditForm(props) {
         setSelectedOption(e.target.value)
     }
 
-    function handleTextareaChange(e) {
-        setMessageBoxText('hi');
-      };
-
     // Defines a options variable to populate select box
     const options = data.map((item) => (
         <option key={item.id} value={item.name}>
@@ -47,8 +43,6 @@ function EditForm(props) {
                     </select>
 
                 </div>
-
-                {selectedOption}
 
                 <br></br>
 
